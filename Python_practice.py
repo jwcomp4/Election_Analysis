@@ -124,3 +124,11 @@ for county_dict in voting_data:
 for i in range(len(voting_data)):
     print(voting_data[i]["county"])
 
+#getting values from list of dictionaries
+#requires a nested for-loop
+#need to think through this one a bit..
+
+for county_dict in voting_data:
+    for value in county_dict.values():
+        print(value)
+
