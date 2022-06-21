@@ -77,3 +77,50 @@ counties_dict =  {'Arapahoe': 422829, 'Denver': 463353, 'Jefferson': 432438}
 
 for county in counties_dict.keys():
     print(county)
+
+#you can retrieve the values using the values() method:
+#note the more appropriate iterator variable
+
+for voters in counties_dict.values():
+    print(voters)
+
+#you can also use the format dictionary_name[key] to get the value:
+#here, note where you are using the iterator variable in the print statement.
+#this will only print the values.
+
+for county in counties:
+    print(counties_dict[county])
+
+#it is also possible to use the get() method to retrieve the values in the dict
+
+for county in counties:
+    print(counties_dict.get(county))
+
+#to get the key-value pairs, you can use the item() method
+#the first variable declared in the for loop is the key
+#the second variable declared in teh for loop is the value
+
+for county, voters in counties_dict.items():
+    print(county, voters)
+
+#doing the same as above with better print statement
+
+for county, voters in counties_dict.items():
+    print(county + " has " + str(voters) + " registered voters.")
+
+#now working on using a for-loop to iterate through a list of dictionaries.
+
+#creating list of dictionaries: 
+voting_data = [{"county" : "Arapahoe", "registered_voters": 4228229}, {"county": "Denver", "registered_voters": 463353},
+{"county": "Jefferson", "registered_voters": 432438}]
+
+#to print each dictionary on a separate line:
+
+for county_dict in voting_data:
+    print(county_dict)
+
+#because this is a list, you can use the range() function to print just the counties:
+#assume that here, you tell the program to print the "county" key at the i index.
+for i in range(len(voting_data)):
+    print(voting_data[i]["county"])
+
