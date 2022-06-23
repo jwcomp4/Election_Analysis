@@ -11,3 +11,16 @@
 #3. Add a vote for each candidate, when applicable. 
 #4. Get the total votes for each candidate
 #5. Get total votes cast for the election.
+
+file_to_load = 'Resources/election_results.csv'
+#above, telling computer to open the election_results.csv in the Resources folder, which is in the same directory
+#as this .py file.
+
+#open the election_results file and read it:
+election_data = open(file_to_load, "r")
+
+#Perform the analysis here
+
+#Close the file
+
+election_data.close()
