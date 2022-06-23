@@ -189,5 +189,5 @@ voting_data = [{"county" : "Arapahoe", "registered_voters": 4228229}, {"county":
 
 for county_data in voting_data:
     for county, voters in county_data:
-        print(f"{county} county has {voters: ,} registered voters")
+        print(f'{county} county has {voters: ,} registered voters')
 
