@@ -102,9 +102,9 @@ with open(file_to_load) as election_data:
     #note that when you print here, each row is printed as a list.
     #this for loop allows you to iterate through every row and print the data.
 
-    #the next() method skips the first row and returns the next itme on the list.
+    #the next() method skips the first row and returns the next itme on the list. Stores in headers var.
     headers = next(file_reader)
-    #this will print the headers.
+    
     for row in file_reader:
         #Adding up the votes:
         total_votes += 1
@@ -127,27 +127,55 @@ with open(file_to_load) as election_data:
         #put this outside of the if statement so as to capture every row.
         candidate_votes[candidate_name] += 1
 
-for candidate_name in candidate_votes:
-    #retrieving the vote count for each candidate
-    votes = candidate_votes[candidate_name]
-    #calculating the percentage of votes 
-    vote_percentage = float(votes) / float(total_votes) * 100
-    #setting up if statement to determine the winning count and percentage.
-    if (votes > winning_count) and (vote_percentage > winning_percentage):
-        winning_count = votes
-        winning_percentage = vote_percentage
-        winning_candidate = candidate_name
+with open(file_to_save , "w") as txt_file:
+    election_results = (
+        f'\nElection Results\n'
+        f'----------------------------\n'
+        f'Total Votes: {total_votes:,}\n'
+        f'----------------------------\n')
+    print(election_results, end="")
+    #the end parameter will print a newline (\n) by default. 
+    #The end parameter ensures that nothing will be printed on the last line.
 
-    #printing candidate name with vote percentage using an f-string
-    print(f"{candidate_name}: received {vote_percentage: .1f}% of the vote.")
+        #Save the final vote count  to the text file:
+    txt_file.write(election_results)
 
-winning_candidate_summary = (
-    f'--------------------------------\n'
-    f'Winner: {winning_candidate}\n'
-    f'Winning Vote Count: {winning_count:,}\n'
-    f'Winning Percentage: {winning_percentage:.1f}%\n'
-    f'--------------------------------\n')
+    for candidate_name in candidate_votes:
+        #retrieving the vote count for each candidate
+        votes = candidate_votes[candidate_name]
+        #calculating the percentage of votes 
+        vote_percentage = float(votes) / float(total_votes) * 100
 
-print(winning_candidate_summary)
+        candidate_results = (
+            f"{candidate_name}: {vote_percentage: .1f}% ({votes:,})\n")
+
+        print(candidate_results)
+
+        txt_file.write(candidate_results)
+        #setting up if statement to determine the winning count and percentage.
+        if (votes > winning_count) and (vote_percentage > winning_percentage):
+            winning_count = votes
+            winning_percentage = vote_percentage
+            winning_candidate = candidate_name
+
+        #printing candidate name with vote percentage using an f-string
+        # print(f"{candidate_name}: received {vote_percentage: .1f}% of the vote.")
+
+         
+    
+
+    #writing a summary:
+    winning_candidate_summary = (
+        f'--------------------------------\n'
+        f'Winner: {winning_candidate}\n'
+        f'Winning Vote Count: {winning_count:,}\n'
+        f'Winning Percentage: {winning_percentage:.1f}%\n'
+        f'--------------------------------\n')
+
+    print(winning_candidate_summary)
+
+    txt_file.write(winning_candidate_summary)
+
+# print(winning_candidate_summary)
 
     
