@@ -82,6 +82,15 @@ candidate_options = []
 
 #creating an empty dictionary to hold candidate votes:
 candidate_votes = {}
+
+#creating a var. with empty str to hold winning candidate:
+winning_candidate = ""
+
+#creating a var. to hold the winning count
+winning_count = 0
+
+#creating a variable to hold the percentage of the winning candidate:
+winning_percentage = 0
 #Open the election results and read the file:
 
 with open(file_to_load) as election_data:
@@ -102,6 +111,8 @@ with open(file_to_load) as election_data:
         #grabbing the candidate name:
         candidate_name = row[2]
         #appending that name to the candidate_options list. using a if-else statement with not in
+        #first checks if the name is in the candidate_options list initiated above. 
+        #if condition returns True, runs code block.
         if candidate_name not in candidate_options:
             #add candidate name to the candidate_options list
 
@@ -116,4 +127,27 @@ with open(file_to_load) as election_data:
         #put this outside of the if statement so as to capture every row.
         candidate_votes[candidate_name] += 1
 
-    print(candidate_votes)
+for candidate_name in candidate_votes:
+    #retrieving the vote count for each candidate
+    votes = candidate_votes[candidate_name]
+    #calculating the percentage of votes 
+    vote_percentage = float(votes) / float(total_votes) * 100
+    #setting up if statement to determine the winning count and percentage.
+    if (votes > winning_count) and (vote_percentage > winning_percentage):
+        winning_count = votes
+        winning_percentage = vote_percentage
+        winning_candidate = candidate_name
+
+    #printing candidate name with vote percentage using an f-string
+    print(f"{candidate_name}: received {vote_percentage: .1f}% of the vote.")
+
+winning_candidate_summary = (
+    f'--------------------------------\n'
+    f'Winner: {winning_candidate}\n'
+    f'Winning Vote Count: {winning_count:,}\n'
+    f'Winning Percentage: {winning_percentage:.1f}%\n'
+    f'--------------------------------\n')
+
+print(winning_candidate_summary)
+
+    

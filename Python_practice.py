@@ -137,57 +137,65 @@ for county_dict in voting_data:
 
 
 
-#Playing with f-strings
+# #Playing with f-strings
 
-my_votes = int(input("How many votes did you get in the election? "))
+# my_votes = int(input("How many votes did you get in the election? "))
 
-total_votes = int(input("What is the total number of votes in the election? "))
+# total_votes = int(input("What is the total number of votes in the election? "))
 
-print(f"I received {my_votes / total_votes * 100}% of the total")
-    #here  the f-string calculates the value in the {} and formats to a str
+# print(f"I received {my_votes / total_votes * 100}% of the total")
+#     #here  the f-string calculates the value in the {} and formats to a str
 
-#F-Strings with Dictionaries
-#Here using f-strings to get print statement from previous code, cf line 108-109
-#This makes it a lot easier to read. 
-for county, voters in counties_dict.items():
-    print(f"{county} county has {voters} registered voters.")
+# #F-Strings with Dictionaries
+# #Here using f-strings to get print statement from previous code, cf line 108-109
+# #This makes it a lot easier to read. 
+# for county, voters in counties_dict.items():
+#     print(f"{county} county has {voters} registered voters.")
 
-#Multi-Line F-Strings
+# #Multi-Line F-Strings
 
-#this looks really interesting - basically creating a variable to hold the multi-line string
-#curious if this is considered a tuple?
+# #this looks really interesting - basically creating a variable to hold the multi-line string
+# #curious if this is considered a tuple?
 
-candidate_votes = int(input("How many votes did the candidate get in the election? "))
+# candidate_votes = int(input("How many votes did the candidate get in the election? "))
 
-total_votes = int(input("What is the total number of votes in the election? "))
+# total_votes = int(input("What is the total number of votes in the election? "))
 
-message_to_candidate = (
-    f"You received {candidate_votes: ,} number of votes. "
-    f"The total number of votes in the election was {total_votes: ,}. "
-    f"You received {candidate_votes / total_votes * 100: .2f}% of the total votes. ")
+# message_to_candidate = (
+#     f"You received {candidate_votes: ,} number of votes. "
+#     f"The total number of votes in the election was {total_votes: ,}. "
+#     f"You received {candidate_votes / total_votes * 100: .2f}% of the total votes. ")
 
-print(message_to_candidate)
+# print(message_to_candidate)
 
-#a few things to note here about formating floating point. 
-#general format is f"{value: {width} . {precision}}
-#width specifies the number of char used, but if more is needed, they will appear
-#precision is the number of decimal places. 
-#note that in line 162 and 163 there is a : after candidate_votes followed by space and then ,
-#this means that you can use thousands comma delimiter
-#in 164 you see the . after the : followed by .2f noting the precision of 2 "floating point decimal places" f is impt
+# #a few things to note here about formating floating point. 
+# #general format is f"{value: {width} . {precision}}
+# #width specifies the number of char used, but if more is needed, they will appear
+# #precision is the number of decimal places. 
+# #note that in line 162 and 163 there is a : after candidate_votes followed by space and then ,
+# #this means that you can use thousands comma delimiter
+# #in 164 you see the . after the : followed by .2f noting the precision of 2 "floating point decimal places" f is impt
 
-#skill drill of printing everything in counties_dict using f-strings
-#this is iterating through a dictionary
+# #skill drill of printing everything in counties_dict using f-strings
+# #this is iterating through a dictionary
 
-for county, voters in counties_dict.items():
-    print(f"{county} county has {voters} registered voters.")
+# for county, voters in counties_dict.items():
+#     print(f"{county} county has {voters} registered voters.")
 
-#skill drill of printing everything in voting_data using f-strings
-#this is retrieving data in a list of dictionaries
+# #skill drill of printing everything in voting_data using f-strings
+# #this is retrieving data in a list of dictionaries
 voting_data = [{"county" : "Arapahoe", "registered_voters": 4228229}, {"county": "Denver", "registered_voters": 463353},
 {"county": "Jefferson", "registered_voters": 432438}]
 
-for county_data in voting_data:
-    for county, voters in county_data:
-        print(f'{county} county has {voters: ,} registered voters')
+# for county_data in voting_data:
+#     for county, voters in county_data.items():
+#         print(f'{county} county has {voters} registered voters')
 
+for county_data in voting_data:
+    county, votes = county_data.values()
+    print(f'{county} county has {voters} registered voters')
+
+
+for county_data in voting_data:
+    
+    print(f'{county_data["county"]} county has {county_data["registered_voters"]} registered voters')
