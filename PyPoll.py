@@ -26,19 +26,19 @@ import os
 
 #Close the file
 
-#election_data.close()
+# election_data.close()
 
-#writing code for the indirect path:
+# writing code for the indirect path:
 
 # file_to_load = os.path.join("Resources" , "election_results.csv")
 
-#here is an example of using a with statement to open, read/write a file wiithout using open() and close() everytime. 
-#The structure of this with statement is very similar to a if-else statement and for-loop re: colon and indent
+# # here is an example of using a with statement to open, read/write a file wiithout using open() and close() everytime. 
+# # The structure of this with statement is very similar to a if-else statement and for-loop re: colon and indent
 
 # with open(file_to_load) as election_data :
-    #perform analysis here
+# #    perform analysis here
 
-    # print(election_data)
+#     print(election_data)
 
 #Here, creating a text file into which we can write and save data:
 
@@ -73,6 +73,15 @@ file_to_load = os.path.join("Resources" , "election_results.csv")
 
 file_to_save = os.path.join('analysis' , 'election_analysis.txt')
 
+#creating the accumulator variable in order to count the total votes:
+
+total_votes = 0
+
+#creating a empty list to hold candidate option names:
+candidate_options = []
+
+#creating an empty dictionary to hold candidate votes:
+candidate_votes = {}
 #Open the election results and read the file:
 
 with open(file_to_load) as election_data:
@@ -87,4 +96,24 @@ with open(file_to_load) as election_data:
     #the next() method skips the first row and returns the next itme on the list.
     headers = next(file_reader)
     #this will print the headers.
-    print(headers)
+    for row in file_reader:
+        #Adding up the votes:
+        total_votes += 1
+        #grabbing the candidate name:
+        candidate_name = row[2]
+        #appending that name to the candidate_options list. using a if-else statement with not in
+        if candidate_name not in candidate_options:
+            #add candidate name to the candidate_options list
+
+            candidate_options.append(candidate_name)
+
+            #begin tracking candidate's vote count. 
+            #as it goes through the for-loop it creates the key in the dictionary as the name
+            #it also sets the vote count to 0
+            candidate_votes[candidate_name] = 0 
+
+        #then you need to capture each votes:
+        #put this outside of the if statement so as to capture every row.
+        candidate_votes[candidate_name] += 1
+
+    print(candidate_votes)
