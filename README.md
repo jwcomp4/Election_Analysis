@@ -13,7 +13,9 @@
 
 - The same data noted above will be printed and saved to a .txt file entitled "election_analysis.txt" in to the "Resources directory.
 
-## Election Audit Results
+## Election Audit Results and Methods
+
+### Election Audit Results:
 
 - Number of votes cast in this congressional election: 369,711
 
@@ -30,6 +32,10 @@
     - Raymon Anthony Doane received 11,606 votes (3.1% of the total votes).
 
 - Diana DeGette won the election receiving 272,892 votes (73.8% of the total votes).
+
+### Methods:
+
+
 
 ## Election Audit Summary
 
