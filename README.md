@@ -2,7 +2,7 @@
 
 ## Overview of the Election Audit
 
-- This election audit helps to certify the results for an congressional election in Colorado. While Excel is capable of anlyzing tabular data such as this voting data, using Python will allow us to automate the process and use a refactored version of this code to audit and certify other elections. 
+- This election audit helps to certify the results for a congressional election in Colorado. While Excel is capable of anlyzing tabular data such as this voting data, using Python will allow us to automate the process and use a refactored version of this code to audit and certify other elections. 
 
 - In this challenge, I am developing a Python script that will print the following data to the terminal:
     - Total Votes
@@ -38,7 +38,7 @@
         - Denver County: 306,055 votes (82.8% of total votes)
         - Jefferson County: 24,801 votes (6.7% of total votes)
 
-    - Producing the County vote data required a for-loop that iterates through the county_votes dictiionary with a nested if-statement that evaluates the data to determine what county has the highest voter turnout:
+    - Producing the County vote data required a for-loop that iterates through the county_votes dictionary with a nested if-statement that evaluates the data to determine what county has the highest voter turnout:
 
     ```python 
 
@@ -100,7 +100,7 @@
     - Refactoring the variables in the code would make the code more readable for any election.
         - For example, changing the county-related variables to capture state district-related data could make this same script work for a gubernatorial elction. 
         - Likewise, these variables could be changed to reprsente city districts for a mayorial election    
-- Refactoring the code in this manner is simple and still produces accurate election audit efficiently, regardless of the election type. 
+- Refactoring the code in this manner is simple and still produces an accurate election audit efficiently, regardless of the election type. 
 
 
 
